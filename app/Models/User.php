@@ -17,6 +17,16 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
     public function scopeSearchKeyword($query, $keyword)
     {
     return $query->where(function ($q) use ($keyword) {
@@ -29,14 +39,4 @@ class User extends Authenticatable
     {
     return $query;
     }
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
 }
