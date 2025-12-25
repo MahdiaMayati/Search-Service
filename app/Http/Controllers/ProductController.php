@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Facades\Search;
 use App\Services\SearchService;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,11 @@ class ProductController extends Controller
 {
     $namespace = 'App\\Filters\\Product';
 
+    // $query = Search::apply(Product::query(), $request->all(), $namespace);
     $query = $searchService->apply(Product::query(), $request->all(), $namespace);
 
    return response()->json($query->paginate($request->get('limit', 10)));
-   
+
 //    return response()->json([
 //     'sql' => $query->toSql(),
 //     'bindings' => $query->getBindings()

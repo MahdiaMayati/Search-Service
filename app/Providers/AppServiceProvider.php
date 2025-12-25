@@ -6,17 +6,14 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+
     public function register(): void
     {
-        //
+      $this->app->bind('search-service', function ($app) {
+        return new \App\Services\SearchService();
+    });
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         //
