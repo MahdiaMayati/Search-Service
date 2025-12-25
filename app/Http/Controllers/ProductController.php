@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-  public function index(Request $request, SearchService $searchService)
+    public function index(Request $request, SearchService $searchService)
 {
-    $query = $searchService->apply(Product::query(), $request->all());
+    $namespace = 'App\\Filters\\Product';
 
-    return response()->json($query->paginate($request->get('limit', 10)));
+    $query = $searchService->apply(Product::query(), $request->all(), $namespace);
+    
+   return response()->json($query->paginate($request->get('limit', 10)));
 }
 }

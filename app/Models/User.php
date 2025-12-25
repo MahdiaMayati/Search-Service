@@ -39,4 +39,21 @@ class User extends Authenticatable
     {
     return $query;
     }
+
+    public function scopeSearch($query, $keyword)
+    {
+        return $query->where('name', 'like', "%{$keyword}%")
+                     ->orWhere('email', 'like', "%{$keyword}%");
+    }
+
+    public function scopeByRole($query, $role)
+    {
+        return $query->where('role', $role);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
 }

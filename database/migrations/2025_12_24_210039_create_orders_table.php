@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('order_number'); // لدعم keyword
-            $table->decimal('total_price', 10, 2); // لدعم min_price / max_price
-            $table->string('status'); // لدعم status (pending, completed, canceled)
-            $table->timestamps(); // لدعم date range و order by (created_at)
+            $table->string('order_number');
+            $table->decimal('total_price', 10, 2);
+            $table->string('status');
+            $table->timestamps(); 
         });
     }
 
