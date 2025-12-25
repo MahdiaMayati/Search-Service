@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-   public function scopeSearchKeyword($query, $keyword) {
+
+    public function scopeSearchKeyword($query, $keyword) {
     return $query->where('name', 'like', "%$keyword%")
     ->orWhere('description', 'like', "%$keyword%");
     }
@@ -24,20 +25,5 @@ class Product extends Model
     return $query->whereBetween('created_at', [$from, $to]);
     }
 }
-// داخل Models/Product.php
 
-// البحث بالكلمة المفتاحية (الاسم والوصف)
-// public function scopeSearchKeyword($query, $keyword)
-// {
-//     return $query->where(function ($q) use ($keyword) {
-//         $q->where('name', 'like', "%$keyword%")
-//           ->orWhere('description', 'like', "%$keyword%");
-//     });
-// فلتر السعر (التعامل مع القيم الفارغة)
-// public function scopePriceBetween($query, $min, $max)
-// {
-//     if ($min) $query->where('price', '>=', $min);
-//     if ($max) $query->where('price', '<=', $max);
-//     return $query;
-// }
 

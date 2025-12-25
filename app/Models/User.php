@@ -17,9 +17,6 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-        // داخل Models/User.php
-
-// البحث بالاسم أو البريد الإلكتروني (Keyword)
     public function scopeSearchKeyword($query, $keyword)
     {
     return $query->where(function ($q) use ($keyword) {
@@ -28,15 +25,11 @@ class User extends Authenticatable
     });
     }
 
-// المستخدمين لا يملكون سعراً، لذا يمكننا ترك هذا الـ Scope فارغاً أو البحث بحسب العمر/الرصيد
     public function scopePriceBetween($query, $min, $max)
     {
-    return $query; // كود آمن للتعامل مع القيم الفارغة
+    return $query;
     }
-    
-// public function scopePriceBetween($query, $min, $max) {
-//     return $query; // لا يفعل شيئاً للمستخدمين، فقط يمنع الخطأ
-// }
+
     protected $hidden = [
         'password',
         'remember_token',
