@@ -1,0 +1,4 @@
+http://127.0.0.1:8000/api/products?limit=1
+http://127.0.0.1:8000/api/products?keyword=lap&min_price=500
+http://127.0.0.1:8000/api/products?order_by=price&direction=desc
+http://127.0.0.1:8000/api/products?keyword=laptop
