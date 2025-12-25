@@ -13,7 +13,7 @@ class UserController extends Controller
     $request->validate([
     'keyword'     => 'nullable|string|max:100',
     'role'        => 'nullable|string',
-    'active_only' => 'nullable',
+    'status' => 'nullable',
     'from_date'   => 'nullable|date',
 
     ]);
