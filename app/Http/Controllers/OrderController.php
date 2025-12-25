@@ -18,9 +18,6 @@ class OrderController extends Controller
     $namespace);
 
     return response()->json($query->paginate($request->get('limit', 10)));
-}
-    // $allowedFilters = $request->only([
-    //     'keyword', 'min_price', 'max_price', 'status', 'from_date', 'to_date', 'order_by'
-    // ]);
-    // $allowedFilters,
+    }
+
 }

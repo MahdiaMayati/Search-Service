@@ -13,7 +13,12 @@ class ProductController extends Controller
     $namespace = 'App\\Filters\\Product';
 
     $query = $searchService->apply(Product::query(), $request->all(), $namespace);
-    
+
    return response()->json($query->paginate($request->get('limit', 10)));
+   
+//    return response()->json([
+//     'sql' => $query->toSql(),
+//     'bindings' => $query->getBindings()
+// ]);
 }
 }

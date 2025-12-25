@@ -3,11 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     use HasFactory;
+    use Searchable;
+    
+    public $sortable = ['order_number', 'total_price', 'status', 'created_at'];
 
     public function scopeSearch($query, $keyword) {
         return $query->where('order_number', 'like', "%$keyword%")

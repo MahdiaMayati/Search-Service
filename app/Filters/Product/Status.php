@@ -1,16 +1,16 @@
 <?php
-namespace App\Filters\User;
-
+namespace App\Filters\Product;
 use App\Filters\FilterContract;
+
 use Illuminate\Database\Eloquent\Builder;
 
-class ActiveOnly implements FilterContract
+class Status implements FilterContract
 {
     public function apply(Builder $query, $value)
     {
-        if ($value == '1' || $value == 'true') {
+      if ($value === 'active') {
             return $query->active();
         }
-        return $query;
+        return $query->where('status', $value);
     }
 }

@@ -6,16 +6,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Traits\Searchable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable , Searchable;
 
     protected $fillable = [
         'name',
         'email',
         'password',
+        'created_at'
     ];
     protected $hidden = [
         'password',
@@ -27,25 +29,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function scopeSearchKeyword($query, $keyword)
-    {
-    return $query->where(function ($q) use ($keyword) {
-        $q->where('name', 'like', "%$keyword%")
-          ->orWhere('email', 'like', "%$keyword%");
-    });
-    }
-
     public function scopePriceBetween($query, $min, $max)
     {
     return $query;
     }
 
-    public function scopeSearch($query, $keyword)
+   public function scopeSearch($query, $keyword)
     {
-        return $query->where('name', 'like', "%{$keyword}%")
-                     ->orWhere('email', 'like', "%{$keyword}%");
+    return $query->where(function($q) use ($keyword) {
+        $q->where('name', 'like', "%{$keyword}%")
+          ->orWhere('email', 'like', "%{$keyword}%");
+    });
     }
-
     public function scopeByRole($query, $role)
     {
         return $query->where('role', $role);
