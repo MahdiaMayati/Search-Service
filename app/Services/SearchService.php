@@ -10,7 +10,7 @@ class SearchService
     {
         foreach ($filters as $key => $value) {
 
-            if (is_null($value) || $value === '') continue;
+           if (is_null($value) || $value === '') continue;
 
            if (in_array($key, ['to_date', 'max_price', 'direction'])) continue;
 

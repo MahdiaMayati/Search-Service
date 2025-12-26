@@ -15,7 +15,6 @@ class OrderController extends Controller
     $namespace = 'App\\Filters\\Order';
 
     // $query = Search::apply(Order::query(), $request->all(), $namespace);
-    
     $query = $searchService->apply(
     Order::query(),
     $request->all(),

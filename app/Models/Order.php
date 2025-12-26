@@ -11,6 +11,10 @@ class Order extends Model
     use HasFactory;
     use Searchable;
     
+    protected $casts = [
+    'status' => \App\Enums\OrderStatus::class,
+    ];
+
     public $sortable = ['order_number', 'total_price', 'status', 'created_at'];
 
     public function scopeSearch($query, $keyword) {
