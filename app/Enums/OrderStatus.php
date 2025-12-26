@@ -6,7 +6,7 @@ enum OrderStatus: string
 {
     case PENDING = 'pending';
     case APPROVED = 'approved';
-    case REJECTED = 'rejected';
+    case REJECTED = 'active';
 
     public static function values(): array
     {

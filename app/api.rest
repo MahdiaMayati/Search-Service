@@ -2,9 +2,9 @@
 # http://127.0.0.1:8000/api/products?keyword=lap&min_price=500
 # http://127.0.0.1:8000/api/products?order_by=price&direction=desc
 # http://127.0.0.1:8000/api/products?keyword=laptop
-GET http://localhost:8000/api/products?keyword=iphone&price=500&status=active&order_by=price&direction=asc
+# GET http://localhost:8000/api/products?keyword=iphone&price=500&status=active&order_by=price&direction=asc
 # GET http://localhost:8000/api/users?keyword=ma@gmail.com
-# GET http://localhost:8000/api/orders?from_date=2025-12-25&to_date=2023-12-31&status=active
+# GET http://localhost:8000/api/orders?from_date=2023-01-01&to_date=2025-12-31&status=active
 # GET  http://localhost:8000/api/products?keyword=laptop&min_price=500&&from_date=2023-01-01
 # api/users?keyword=ahmed&limit=5
 
